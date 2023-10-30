@@ -1,3 +1,10 @@
+/* eslint-disable @typescript-eslint/member-delimiter-style */
+/* eslint-disable @typescript-eslint/comma-dangle */
+/* eslint-disable @typescript-eslint/no-floating-promises */
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
+/* eslint-disable @typescript-eslint/triple-slash-reference */
+/* eslint-disable prefer-regex-literals */
+/* eslint-disable @typescript-eslint/semi */
 /// <reference lib="webworker" />
 /* eslint-disable no-restricted-globals */
 
