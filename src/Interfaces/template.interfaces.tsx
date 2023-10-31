@@ -17,6 +17,7 @@ export interface Icolors {
 }
 // create interface for fonts
 export interface Ifonts {
+  superBig: string
   big: string
   medium: string
   regular: string

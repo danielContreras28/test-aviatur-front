@@ -9,4 +9,7 @@ export const ContainerNav = styled.div`
     padding: 10px 20px;
     display: flex;
     align-items: center;
+    z-index: 100;
+    justify-content: space-between;
+    flex-direction: row;
 `

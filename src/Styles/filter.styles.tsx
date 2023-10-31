@@ -8,6 +8,14 @@ export const ContainerFilter = styled.div`
     justify-content: space-between;
     flex-direction: column;
     color: ${config.colors.textSecondary};
+
+    @media (max-width: 768px) {
+        align-items: center;
+    }
+`
+// create component container filter details
+export const ContainerFilterDetails = styled.div`
+    width: 100%;
 `
 // create component title filter
 export const TitleFilter = styled.h1`
@@ -15,6 +23,17 @@ export const TitleFilter = styled.h1`
     margin-top: 10px;
     padding: 0px 20px;
     width: calc(100% - 40px);
+
+    @media (max-width: 768px) {
+        background-color: ${config.colors.white};
+        color: ${config.colors.primary};
+        font-size: ${config.fonts.medium};
+        font-weight: normal;
+        padding: 20px;
+        margin: 0px;
+        box-shadow: 0px 1px 4px ${config.colors.textSecondary};
+        border-bottom: 1px solid ${config.colors.textSecondary};
+    }
 `
 // create component from container filter
 export const FromContainerFilter = styled.div`
@@ -22,6 +41,11 @@ export const FromContainerFilter = styled.div`
     margin: 0px 20px;
     background-color: ${config.colors.white};
     box-shadow: 0px 1px 4px ${config.colors.textSecondary};
+
+    @media (max-width: 768px) {
+        width: 100%;
+        margin: 0px;
+    }
 `
 // create component container item from to filter
 export const ContainerItemFilter = styled.div`
@@ -54,9 +78,16 @@ export const Icon = styled.span`
     color: ${config.colors.text};
     font-size: ${config.fonts.medium};
 `
+// create component icon close min extending Icon
+export const IconCloseMin = styled(Icon)`
+    font-size: ${config.fonts.tiny};
+    cursor: pointer;
+    margin-left: 5px;
+`
 // create component iconCheck extending Icon
 export const IconCheck = styled(Icon)`
     color: ${config.colors.secondary};
+    cursor: pointer;
 `
 // create component iconStar extending Icon
 export const IconStar = styled(Icon)`
@@ -93,7 +124,7 @@ export const ContainerInputCheck = styled.div`
 export const InputCheck = styled.input.attrs({
   type: 'checkbox'
 })`
-    border: 1px solid ${config.colors.text};
+    border: 2px solid ${config.colors.text};
     border-radius: 0px;
     width: 20px;
     height: 20px;

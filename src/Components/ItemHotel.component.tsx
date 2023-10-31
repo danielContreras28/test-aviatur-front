@@ -1,10 +1,18 @@
 // create component item hotel
-import { ReactElement } from 'react'
-import { EIconAmenities, IHotels } from '../Interfaces/hotels.interfaces'
+import { ReactElement, useContext, useEffect, useState } from 'react'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
+import { ref, getDownloadURL } from 'firebase/storage'
+
+import { storage } from '../firebase/config'
+import { EIconAmenities, IHotels, IHotelsContext } from '../Interfaces/hotels.interfaces'
 import { Icon, IconStar } from '../Styles/filter.styles'
+import { ButtonEdit, ContainerButtonEdit, ContainerInfoHotel, ContainerInfoTwoHotels, ContainerItemHotel, ContainerStar, DeclarationPlacement, IconEdit, NameHotel, PriceHotel } from '../Styles/list.styles'
+import { Button } from '../Styles/general.styles'
+import { HotelsContext } from '../Contexts/hotels.context'
 
 const ItemHotel = ({ Hotel }: { Hotel: IHotels }): ReactElement => {
+  const { setSelectedHotel, setViewForm } = useContext(HotelsContext) as IHotelsContext
+  const [UrlImg, setUrlImg] = useState<string>('')
   const handleStar = (numberStar: number): ReactElement => {
     // create an array of size n
     const arr = Array(numberStar).fill(null)
@@ -51,20 +59,40 @@ const ItemHotel = ({ Hotel }: { Hotel: IHotels }): ReactElement => {
     }
   }
 
+  // handle get form edit hotel
+  const editHotel = (): void => {
+    setSelectedHotel(Hotel.id)
+    setViewForm(true)
+  }
+
+  useEffect(() => {
+    getDownloadURL(ref(storage, `hotels/${Hotel.image}`))
+      .then((url) => {
+        setUrlImg(url)
+      }).catch((error) => {
+        console.log(error)
+      })
+  }, [Hotel])
+
   return (
-    <div>
-      <LazyLoadImage src={Hotel.image} alt={Hotel.name} effect='blur' height='100%' />
-      <div>
-        <label>{Hotel.name}</label>
-        {handleStar(Hotel.stars)}
-        <>{Hotel.amenities.map((amenitie, i) => handleIconAmenities(amenitie, i))}</>
-      </div>
-      <div>
-        <label>precio por noche por habitación</label>
-        <label>$ {Hotel.price}</label>
-        <button>Ver hotel</button>
-      </div>
-    </div>
+    <ContainerItemHotel>
+      <LazyLoadImage src={UrlImg} alt={Hotel.name} effect='blur' width='100%' />
+      <ContainerInfoHotel>
+        <NameHotel>{Hotel.name}</NameHotel>
+        <ContainerStar>
+          {handleStar(Hotel.stars)}
+        </ContainerStar>
+        <div>{Hotel.amenities.map((amenitie, i) => handleIconAmenities(amenitie, i))}</div>
+      </ContainerInfoHotel>
+      <ContainerInfoTwoHotels>
+        <ContainerButtonEdit>
+          <ButtonEdit onClick={editHotel}><IconEdit className='icon-pencil' /></ButtonEdit>
+        </ContainerButtonEdit>
+        <DeclarationPlacement>precio por noche por habitación</DeclarationPlacement>
+        <PriceHotel>$ {Hotel.price}</PriceHotel>
+        <Button onClick={editHotel}>VER HOTEL</Button>
+      </ContainerInfoTwoHotels>
+    </ContainerItemHotel>
   )
 }
 

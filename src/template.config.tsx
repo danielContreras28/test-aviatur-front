@@ -14,6 +14,7 @@ export const templateConfig: TemplateConfig = {
     white: '#FFFFFF'
   },
   fonts: {
+    superBig: '40px',
     big: '20px',
     medium: '18px',
     regular: '14px',

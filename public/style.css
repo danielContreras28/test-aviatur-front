@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'aviatur';
-  src:  url('fonts/aviatur.eot?nu90q4');
-  src:  url('fonts/aviatur.eot?nu90q4#iefix') format('embedded-opentype'),
-    url('fonts/aviatur.ttf?nu90q4') format('truetype'),
-    url('fonts/aviatur.woff?nu90q4') format('woff'),
-    url('fonts/aviatur.svg?nu90q4#aviatur') format('svg');
+  src:  url('fonts/aviatur.eot?o5ee6f');
+  src:  url('fonts/aviatur.eot?o5ee6f#iefix') format('embedded-opentype'),
+    url('fonts/aviatur.ttf?o5ee6f') format('truetype'),
+    url('fonts/aviatur.woff?o5ee6f') format('woff'),
+    url('fonts/aviatur.svg?o5ee6f#aviatur') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -98,6 +98,30 @@
 }
 .icon-star:before {
   content: "\e912";
+}
+.icon-filter-list:before {
+  content: "\e91c";
+}
+.icon-delete:before {
+  content: "\e91b";
+}
+.icon-arrow-forward:before {
+  content: "\e917";
+}
+.icon-close:before {
+  content: "\e918";
+}
+.icon-file-download:before {
+  content: "\e919";
+}
+.icon-upload:before {
+  content: "\e91a";
+}
+.icon-plus:before {
+  content: "\e915";
+}
+.icon-pencil:before {
+  content: "\e916";
 }
 .icon-done-black:before {
   content: "\e914";
